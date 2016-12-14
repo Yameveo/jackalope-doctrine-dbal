@@ -1360,7 +1360,9 @@ class Client extends BaseTransport implements QueryTransport, WritingInterface, 
             $childName = explode('/', $child['path']);
             $childName = end($childName);
             if (!isset($data[$child['parent']]->{$childName})) {
-                $data[$child['parent']]->{$childName} = new \stdClass();
+	            if(!empty($childName)) {
+    	            $data[$child['parent']]->{$childName} = new \stdClass();
+    	        }
             }
         }
 
